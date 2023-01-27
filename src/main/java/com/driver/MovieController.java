@@ -46,7 +46,7 @@ public class MovieController {
 //    Controller Name - getMovieByName
 
     @GetMapping("movies/get-movie-by-name/{name}")
-    public ResponseEntity<Movie> getMovieByName(@PathParam String movie){
+    public ResponseEntity<Movie> getMovieByName(@PathParam("name") String movie){
         return new ResponseEntity<>(movieService.getMovieByName(movie), HttpStatus.FOUND);
     }
 //    Get Director by director name: GET /movies/get-director-by-name/{name}
@@ -54,7 +54,7 @@ public class MovieController {
 //    Return Director object wrapped in a ResponseEntity object
 //    Controller Name - getDirectorByName
     @GetMapping("movies/get-director-by-name/{name}")
-    public ResponseEntity<Director> getDirectorByName(@PathParam String director){
+    public ResponseEntity<Director> getDirectorByName(@PathParam("name") String director){
         return new ResponseEntity<>(movieService.getDirectorByName(director), HttpStatus.FOUND);
     }
 //    Get List of movies name for a given director name: GET /movies/get-movies-by-director-name/{director}
@@ -62,7 +62,7 @@ public class MovieController {
 //    Return List of movies name(List()) wrapped in a ResponseEntity object
 //    Controller Name - getMoviesByDirectorName
     @GetMapping("movies/get-movies-by-director-name/{director}")
-    public ResponseEntity<List<String>> getMoviesByDirectorName(@PathParam String director){
+    public ResponseEntity<List<String>> getMoviesByDirectorName(@PathParam("director") String director){
         return new ResponseEntity<>(movieService.getMoviesByDirectorName(director), HttpStatus.FOUND);
     }
 //    Get List of all movies added: GET /movies/get-all-movies
