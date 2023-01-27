@@ -14,19 +14,19 @@ public class MovieRepository {
     Map<String,Director> directorMap = new HashMap<>();
     Map<String, List<String>> dmPair = new HashMap<>();
 
-    String addMovie(Movie movie){
+    public String addMovie(Movie movie){
         if(movie==null) return "Something Went Wrong";
         movieMap.put(movie.getName(),movie);
         return "Movie Added Successfully";
     }
 
-    String addDirector(Director director){
+    public String addDirector(Director director){
         if(director==null) return "Something Went Wrong";
         directorMap.put(director.getName(),director);
         return "Director Added Successfully";
     }
 
-    String addMovieDirectorPair(String movieName, String directorName){
+    public String addMovieDirectorPair(String movieName, String directorName){
         if(movieMap.containsKey(movieName) && directorMap.containsKey(directorName)){
             if(dmPair.containsKey(directorName)){
                 dmPair.get(directorName).add(movieName);
@@ -40,7 +40,7 @@ public class MovieRepository {
         return "Something Went Wrong";
     }
 
-    Movie getMovieByName(String movieName){
+    public Movie getMovieByName(String movieName){
         return movieMap.get(movieName);
     }
 
@@ -57,7 +57,7 @@ public class MovieRepository {
         return allMovies;
     }
 
-    String deleteDirectorByName(String directorName){
+    public String deleteDirectorByName(String directorName){
         if(dmPair.containsKey(directorName)){
             dmPair.remove(directorName);
             return "Deleted Suceessfully";
@@ -66,7 +66,7 @@ public class MovieRepository {
         }
     }
 
-    String deleteAllDirectors(){
+    public String deleteAllDirectors(){
         for(List<String> ls:dmPair.values()){
             for(String movieName : ls){
                     movieMap.remove(movieName);
