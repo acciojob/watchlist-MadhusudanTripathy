@@ -58,7 +58,12 @@ public class MovieRepository {
     }
 
     public String deleteDirectorByName(String directorName){
+        
         if(dmPair.containsKey(directorName)){
+            for(String movie: dmPair.get(directorName)){
+                movieMap.remove(movie);
+            }
+            directorMap.remove(directorName);
             dmPair.remove(directorName);
             return "Deleted Suceessfully";
         }else{
@@ -67,11 +72,11 @@ public class MovieRepository {
     }
 
     public String deleteAllDirectors(){
-//        for(List<String> ls:dmPair.values()){
-//            for(String movieName : ls){
-//                    movieMap.remove(movieName);
-//            }
-//        }
+        for(List<String> ls:dmPair.values()){
+            for(String movieName : ls){
+                    movieMap.remove(movieName);
+            }
+        }
         dmPair.clear();
         directorMap.clear();
         return "Removed Successfully";
