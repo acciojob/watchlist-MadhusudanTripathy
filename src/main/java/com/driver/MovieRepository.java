@@ -67,11 +67,11 @@ public class MovieRepository {
     }
 
     public String deleteAllDirectors(){
-        for(List<String> ls:dmPair.values()){
-            for(String movieName : ls){
-                    movieMap.remove(movieName);
-            }
-        }
+//        for(List<String> ls:dmPair.values()){
+//            for(String movieName : ls){
+//                    movieMap.remove(movieName);
+//            }
+//        }
         dmPair.clear();
         directorMap.clear();
         return "Removed Successfully";
